@@ -3,6 +3,7 @@ const nowBtn = document.getElementById("nowBtn");
 const scheduleList = document.getElementById("scheduleList");
 const shareBtn = document.getElementById("shareBtn");
 const clearBtn = document.getElementById("clearBtn");
+const copyScheduleBtn = document.getElementById("copyScheduleBtn");
 
 const schedule = [
   ["Breakfast + Personal Priorities", 3],
@@ -74,6 +75,23 @@ function loadTime() {
     renderSchedule(saved);
   }
 }
+
+copyScheduleBtn.addEventListener("click", () => {
+  const items = [...scheduleList.querySelectorAll("li")];
+  if (!items.length) return;
+
+  const text = items
+    .map(item => {
+      const [timeEl, labelEl] = item.children;
+      return `${timeEl.textContent} – ${labelEl.textContent}`;
+    })
+    .join("\n");
+
+  navigator.clipboard.writeText(text).then(() => {
+    copyScheduleBtn.textContent = "Copied!";
+    setTimeout(() => (copyScheduleBtn.textContent = "Copy Schedule"), 2000);
+  });
+});
 
 startTimeInput.addEventListener("change", () => {
   const val = startTimeInput.value;
