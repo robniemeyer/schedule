@@ -6,12 +6,13 @@ const clearBtn = document.getElementById("clearBtn");
 const copyScheduleBtn = document.getElementById("copyScheduleBtn");
 
 const schedule = [
-  ["Breakfast + Personal Priorities", 3],
-  ["Brunch + Focused Work", 3],
-  ["Lunch + Body Training", 4],
-  ["Dinner + Focused Work", 3],
-  ["Supper + Personal Priorities", 3],
-  ["Core Rest", 8],
+  ["Morning Enjoyment", 1.5],
+  ["Breakfast + Focused Work", 2.5],
+  ["Snack + Focused Work", 2.5],
+  ["Lunch + Afternoon Enjoyment", 3.5],
+  ["Pre-Workout + Body Training + Post-Workout Dinner", 4],
+  ["Evening Enjoyment", 1.5],
+  ["Core Rest", 8.5],
 ];
 
 function setNow() {
@@ -35,7 +36,14 @@ function getSchedule(startTime) {
 
   for (const [label, duration] of schedule) {
     result.push([hour, minute, label]);
-    hour += duration;
+    hour += Math.floor(duration);
+    minute += Math.round(60 * (duration % 1));
+
+    if (minute >= 60) {
+      hour += Math.floor(minute / 60);
+      minute %= 60;
+    }
+
     while (hour >= 24) hour -= 24;
   }
 
