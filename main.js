@@ -92,7 +92,7 @@ function renderSchedule(startTime) {
     scheduleList.prepend(lastChild);
   }
 
-  scheduleList.scrollIntoView({ behavior: "smooth" });
+  //scheduleList.scrollIntoView({ behavior: "smooth" });
 }
 
 function saveTime(time) {
