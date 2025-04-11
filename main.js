@@ -120,8 +120,8 @@ copyScheduleBtn.addEventListener("click", () => {
     .join("\n");
 
   navigator.clipboard.writeText(text).then(() => {
-    copyScheduleBtn.textContent = "Copied!";
-    setTimeout(() => (copyScheduleBtn.textContent = "Copy Schedule"), 2000);
+    copyScheduleBtn.textContent = "Copiado!";
+    setTimeout(() => (copyScheduleBtn.textContent = "Copiar Cronograma"), 2000);
   });
 });
 
@@ -146,8 +146,8 @@ shareBtn.addEventListener("click", () => {
   const url = new URL(window.location.href);
   url.searchParams.set("start", val);
   navigator.clipboard.writeText(url.toString()).then(() => {
-    shareBtn.textContent = "Copied!";
-    setTimeout(() => (shareBtn.textContent = "Copy Link"), 2000);
+    shareBtn.textContent = "Copiado!";
+    setTimeout(() => (shareBtn.textContent = "Copiar Link"), 2000);
   });
 });
 
